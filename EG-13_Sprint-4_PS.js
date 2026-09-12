@@ -59,3 +59,23 @@ var wordPattern = function(pattern, s) {
 // Expected Output: true
 
 
+/********** 03. Find the Difference **********/
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {character}
+ */
+var findTheDifference = function(s, t) {
+    let charCode = 0;
+    for (let i = 0; i < t.length; i++) {
+        charCode ^= t.charCodeAt(i);
+    }
+    for (let i = 0; i < s.length; i++) {
+        charCode ^= s.charCodeAt(i);
+    }
+    return String.fromCharCode(charCode);
+};
+
+// console.log(findTheDifference("abcd", "abcde"));
+// Expected Output: "e"
+
