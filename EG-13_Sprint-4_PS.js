@@ -180,3 +180,40 @@ var removeNthFromEnd = function(head, n) {
 // const list7 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
 // console.log(removeNthFromEnd(list7, 2));
 // Expected Output: 1 -> 2 -> 3 -> 5
+
+/********** 08. Find First and Last Position of Element in Sorted Array **********/
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var searchRange = function(nums, target) {
+    const findBound = (isFirst) => {
+        let left = 0;
+        let right = nums.length - 1;
+        let bound = -1;
+
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (nums[mid] === target) {
+                bound = mid;
+                if (isFirst) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return bound;
+    };
+
+    return [findBound(true), findBound(false)];
+};
+
+// console.log(searchRange([5, 7, 7, 8, 8, 10], 8));
+// Expected Output: [3, 4]
+
