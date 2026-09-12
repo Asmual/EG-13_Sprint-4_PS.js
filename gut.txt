@@ -1,0 +1,7 @@
+echo "# EG-13_Sprint-4_PS.js" >> README.md
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Asmual/EG-13_Sprint-4_PS.js.git
+git push -u origin main
