@@ -253,3 +253,46 @@ var checkInclusion = function(s1, s2) {
 // console.log(checkInclusion("ab", "eidbaooo"));
 // Expected Output: true
 
+/********** 10. Find All Anagrams in a String **********/
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {number[]}
+ */
+var findAnagrams = function(s, p) {
+    const result = [];
+    if (s.length < p.length) return result;
+
+    const pCount = new Array(26).fill(0);
+    const sCount = new Array(26).fill(0);
+
+    for (let i = 0; i < p.length; i++) {
+        pCount[p.charCodeAt(i) - 97]++;
+        sCount[s.charCodeAt(i) - 97]++;
+    }
+
+    const isMatch = (arr1, arr2) => {
+        for (let i = 0; i < 26; i++) {
+            if (arr1[i] !== arr2[i]) return false;
+        }
+        return true;
+    };
+
+    for (let i = 0; i < s.length - p.length; i++) {
+        if (isMatch(sCount, pCount)) {
+            result.push(i);
+        }
+        sCount[s.charCodeAt(i + p.length) - 97]++;
+        sCount[s.charCodeAt(i) - 97]--;
+    }
+
+    if (isMatch(sCount, pCount)) {
+        result.push(s.length - p.length);
+    }
+
+    return result;
+};
+
+// console.log(findAnagrams("cbaebabacd", "abc"));
+// Expected Output: [0, 6]
+
