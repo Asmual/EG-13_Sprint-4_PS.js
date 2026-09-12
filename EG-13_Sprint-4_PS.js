@@ -79,3 +79,27 @@ var findTheDifference = function(s, t) {
 // console.log(findTheDifference("abcd", "abcde"));
 // Expected Output: "e"
 
+/********** 04. Reverse Linked List **********/
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function(head) {
+    let prev = null;
+    let curr = head;
+
+    while (curr !== null) {
+        let nextTemp = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = nextTemp;
+    }
+
+    return prev;
+};
+
+// function ListNode(val, next) { this.val = val === undefined ? 0 : val; this.next = next === undefined ? null : next; }
+// const list4 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+// console.log(reverseList(list4));
+// Expected Output: ListNode { val: 5, next: ListNode { val: 4, ... } }
+
