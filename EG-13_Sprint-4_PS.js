@@ -151,3 +151,32 @@ var productExceptSelf = function(nums) {
 
 // console.log(productExceptSelf([1, 2, 3, 4]));
 // Expected Output: [24, 12, 8, 6]
+
+/********** 07. Remove Nth Node From End of List **********/
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function(head, n) {
+    const dummy = { val: 0, next: head };
+    let fast = dummy;
+    let slow = dummy;
+
+    for (let i = 0; i <= n; i++) {
+        fast = fast.next;
+    }
+
+    while (fast !== null) {
+        fast = fast.next;
+        slow = slow.next;
+    }
+
+    slow.next = slow.next.next;
+    return dummy.next;
+};
+
+// function ListNode(val, next) { this.val = val === undefined ? 0 : val; this.next = next === undefined ? null : next; }
+// const list7 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+// console.log(removeNthFromEnd(list7, 2));
+// Expected Output: 1 -> 2 -> 3 -> 5
