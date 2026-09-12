@@ -103,3 +103,25 @@ var reverseList = function(head) {
 // console.log(reverseList(list4));
 // Expected Output: ListNode { val: 5, next: ListNode { val: 4, ... } }
 
+/********** 05. Middle of the Linked List **********/
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var middleNode = function(head) {
+    let slow = head;
+    let fast = head;
+
+    while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    return slow;
+};
+
+// function ListNode(val, next) { this.val = val === undefined ? 0 : val; this.next = next === undefined ? null : next; }
+// const list5 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+// console.log(middleNode(list5));
+// Expected Output: ListNode { val: 3, next: ListNode { val: 4, ... } }
+
